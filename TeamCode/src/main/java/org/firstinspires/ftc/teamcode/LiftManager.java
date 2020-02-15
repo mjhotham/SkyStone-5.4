@@ -21,7 +21,7 @@ public class LiftManager {
     public double pidPower = 0.1;
 
     // Fixed ticks per inch (big oof, really sorry about that)
-    public double LiftTicksPerInch = 537.6 / (1.25 * Math.PI);     // for gobilda 19.7:1 and 1.25 inch spool
+    public double LiftTicksPerInch = RobotConstants.LiftMotorTicksPerRotationofOuputShaft / (1.25 * Math.PI);     // for gobilda 19.7:1 and 1.25 inch spool
     public double SlideTicksPerInch = 360 / (1.25 * Math.PI);      // for vex optical shaft encoder and 1.25 inch spool
 
     public double tolerance = 0.25;
@@ -58,7 +58,7 @@ public class LiftManager {
     public void start() {
         RightLift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         LeftLift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        LiftPositionIN = Math.PI * 1.25 * Math.max(LeftLift.getCurrentPosition(), RightLift.getCurrentPosition()) / 537.6;
+        LiftPositionIN = Math.PI * 1.25 * Math.max(LeftLift.getCurrentPosition(), RightLift.getCurrentPosition()) / RobotConstants.LiftMotorTicksPerRotationofOuputShaft;
         liftTargetIN = LiftPositionIN;
         LeftLift.setPower(0);
         RightLift.setPower(0);
@@ -75,7 +75,7 @@ public class LiftManager {
     public void update(RevBulkData bulkData2) {
 
 
-        LiftPositionIN = Math.PI * 1.25 * Math.max(LeftLift.getCurrentPosition(), RightLift.getCurrentPosition()) / 537.6;
+        LiftPositionIN = Math.PI * 1.25 * Math.max(LeftLift.getCurrentPosition(), RightLift.getCurrentPosition()) / RobotConstants.LiftMotorTicksPerRotationofOuputShaft;
         SlidePositionIN = Math.PI * 1.5 * bulkData2.getMotorCurrentPosition(SlideEncoder) / 360;
 
         liftObstruction = SlidePositionIN > 1 || slideTargetIN > 1;
@@ -128,7 +128,7 @@ public class LiftManager {
 
     public void update(RevBulkData bulkData2, double triggerSum, boolean override, boolean slideOverride) {
 
-        LiftPositionIN = Math.PI * 1.25 * Math.max(LeftLift.getCurrentPosition(), RightLift.getCurrentPosition()) / 537.6;
+        LiftPositionIN = Math.PI * 1.25 * Math.max(LeftLift.getCurrentPosition(), RightLift.getCurrentPosition()) / RobotConstants.LiftMotorTicksPerRotationofOuputShaft;
         SlidePositionIN = Math.PI * 1.5 * bulkData2.getMotorCurrentPosition(SlideEncoder) / 360;
 
         liftObstruction = Math.abs(SlidePositionIN - slideTargetIN) > 2;
@@ -212,7 +212,7 @@ public class LiftManager {
 
     public void updatePositions(RevBulkData bulkData2) {
 
-        LiftPositionIN = Math.PI * 1.25 * Math.max(LeftLift.getCurrentPosition(), RightLift.getCurrentPosition()) / 537.6;
+        LiftPositionIN = Math.PI * 1.25 * Math.max(LeftLift.getCurrentPosition(), RightLift.getCurrentPosition()) / RobotConstants.LiftMotorTicksPerRotationofOuputShaft;
         SlidePositionIN = Math.PI * 1.25 * bulkData2.getMotorCurrentPosition(SlideEncoder) / 360;
 
         liftObstruction = SlidePositionIN > 1;

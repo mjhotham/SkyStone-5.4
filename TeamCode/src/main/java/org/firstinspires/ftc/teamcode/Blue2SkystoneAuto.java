@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.PwmControl;
 
 import org.firstinspires.ftc.teamcode.drive.mecanum.SampleMecanumDriveREVOptimized;
 import org.openftc.revextensions2.RevBulkData;
@@ -36,6 +37,8 @@ public class Blue2SkystoneAuto extends LinearOpMode {     // Current Blue Auto
         drive.Gripper.setPosition(RobotConstants.GripperOpenAuto);
         drive.LeftAngle.setPosition(RobotConstants.LeftAngleIntakeBlue);
         drive.RightAngle.setPosition(RobotConstants.RightAngleIntakeBlue);
+
+
     }
 
     void turnOffIntake() {

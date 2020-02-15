@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.util.Range;
+
 class RobotConstants {
 
    // This file contains most of the constants that may need to be adjusted between now and the competition.
@@ -7,12 +9,13 @@ class RobotConstants {
    // All target values are in inches
 
 
-    // For Auto and TeleOP
+    // For Auto and TELEOP
 
     public static double TapeExtendPower = .8;
 
     public static double TapeRetractPower = .2;
 
+    public static double LiftMotorTicksPerRotationofOuputShaft = 386.3;
 
     // For TELEOP
 
@@ -27,16 +30,19 @@ class RobotConstants {
   public static double RightHookDisengaged = .32;
   public static double RightHookEngaged = .62;
 
-  public static double LeftAngleOpen = 0.3;
-  public static double LeftAngleIntake = 0.353;
-  public static double LeftAngleGripped = 0.42;
+  public static double LeftAngleOpen = Range.scale(1211,500,2500,0,1);
+  public static double LeftAngleIntake = Range.scale(1134,500,2500,0,1);
+  public static double LeftAngleGripped = Range.scale(1122,500,2500,0,1);
 
-  public static double RightAngleOpen = 0.58;
-  public static double RightAngleIntake = 0.52;
-  public static double RightAngleGripped = 0.45;
+  public static double RightAngleOpen = Range.scale(1544,500,2500,0,1);
+  public static double RightAngleIntake = Range.scale(1597,500,2500,0,1);
+  public static double RightAngleGripped = Range.scale(1633,500,2500,0,1);
+
 
   public static double GripperOpen = 1;
   public static double GripperClosed = .64;
+
+
 
   public static double WristOverRideSpeed = .002;
 
